@@ -7,6 +7,12 @@ This is a repository to showcase skills, share projects and track my progress in
 
 ## Portfolio Projects
 
+### Sales data
+Code : 
+Description :
+Skills :
+
+
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
