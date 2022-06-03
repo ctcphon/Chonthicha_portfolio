@@ -8,9 +8,10 @@ This is a repository to showcase skills, share projects and track my progress in
 ## Portfolio Projects
 
 ### Sales data
-Code : 
-Description :
-Skills :
+- Code : 
+- Description : The dataset  is list of sale transactions in USA that contains 9,994 records and 21 variables as of 2014-2018. There are consist of order date, category, region, state, profit, sale and discount etc.
+- Skills : Data wrangling, R coding, data visualization and insight business  
+- Tools : R Programming language, Excel 
 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
