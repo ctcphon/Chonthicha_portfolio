@@ -50,5 +50,25 @@ names(store)[names(store) == "Customer Name"] <- "customer_nam
 
 
 
+######## clean and choose data for analysis ########
+
+# I use as.Date function to convert columns order_date and ship_date to datetime.
+view(store$ship_date)
+class(store$ship_date)
+?strptime
+
+ship_date <- as.Date(store$ship_date, format = "%m/%d/%Y")
+order_date <- as.Date(store$order_date, format = "%m/%d/%Y")
+
+store1 <- store %>% separate(order_date, into = c("mont", "day", "year"), remove = F, convert = T)
+view(store1)
+names(store1)
+store1 <- store1[c(1,2,3,5,4,6,7:24)] # new arrange column
+
+str(store1)
+summary(store1)
+
+
+
 
 
