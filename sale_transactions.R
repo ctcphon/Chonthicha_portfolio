@@ -37,7 +37,8 @@ names(store)[names(store) == "Customer Name"] <- "customer_nam
 
 
 
-###########  Question ############################
+###########  Question #################################
+
 # How many customers in this database ?
 # Top 10 of customers which we had sold the most? 
 # What is product which we sales the most? 
@@ -48,6 +49,7 @@ names(store)[names(store) == "Customer Name"] <- "customer_nam
 # how many group in segment and what is the most segment ?
 # Trends of transaction?
 
+###########################################################
 
 
 ######## clean and choose data for analysis ########
