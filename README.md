@@ -3,7 +3,8 @@
 
 I am interested in data analytics. I graduated from actuarial science in major Mathematics and Statistic (Thammasat university, December 2021).  From my point of view, I found that data can do a lot of things.  I see myself in the future working on data. 
 
-This is a repository to showcase skills, share projects and track my progress in Data Analytics / Data Science related topics.
+This is my portfolio which  I created for collect my experience. 
+
 
 ## Portfolio Projects
 
