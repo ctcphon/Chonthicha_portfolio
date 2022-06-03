@@ -8,7 +8,7 @@ This is a repository to showcase skills, share projects and track my progress in
 ## Portfolio Projects
 
 ### Sales data
-- Code : 
+- Code : [sale_transactions.R](https://github.com/ctcphon/Chonthicha_portfolio/blob/gh-pages/sale_transactions.R)
 - Description : The dataset  is list of sale transactions in USA that contains 9,994 records and 21 variables as of 2014-2018. There are consist of order date, category, region, state, profit, sale and discount etc.
 - Skills : Data wrangling, R coding, data visualization and insight business  
 - Tools : R Programming language, Excel 
@@ -38,7 +38,8 @@ For more details see [Basic writing and formatting syntax](https://docs.github.c
 
 ## Study Projects
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ctcphon/Chonthicha_portfolio/settings/pages). The name of this theme is saved in the Jekyll `name` configuration file.
+
+
 
 ## Certificates
 
