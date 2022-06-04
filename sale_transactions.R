@@ -16,20 +16,26 @@ store <- read_csv("Desktop/Bootcamp/samsple_store.csv")
 View(store)
 dim(store) # 9,994 rows and 21 column
 
-# Let’s me show some information of the data. 
+
+head(store) # 4 ID and 17 variables
+
+# A tibble: 6 × 21
+#  row_id order_id       order_date ship_date  ship_mode      customer_id
+   <dbl> <chr>          <chr>      <chr>      <chr>          <chr>      
+# 1      1 CA-2016-152156 11/8/2016  11/11/2016 Second Class   CG-12520   
+# 2      2 CA-2016-152156 11/8/2016  11/11/2016 Second Class   CG-12520   
+# 3      3 CA-2016-138688 6/12/2016  6/16/2016  Second Class   DV-13045   
+# 4      4 US-2015-108966 10/11/2015 10/18/2015 Standard Class SO-20335   
+# 5      5 US-2015-108966 10/11/2015 10/18/2015 Standard Class SO-20335   
+# 6      6 CA-2014-115812 6/9/2014   6/14/2014  Standard Class BH-11710   
+# … with 15 more variables: customer_name <chr>, segment <chr>,
+#   country <chr>, city <chr>, state <chr>, postal_code <chr>,
+#   region <chr>, product_id <chr>, category <chr>, sub_category <chr>,
+#   product_name <chr>, sales <dbl>, quantity <dbl>, discount <dbl>,
+#   profit <dbl>
 
 
-
-head(store)
-
-####### table  example data
-
-
-# for more information
-str(store)
-
-######### example 
-
+str(store)  # for more information
 
 names(store)
 
@@ -40,12 +46,24 @@ names(store)[names(store) == "Order Date"] <- "order_date"
 names(store)[names(store) == "Ship Date"] <- "ship_date"
 names(store)[names(store) == "Ship Mode"] <- "ship_mode"
 names(store)[names(store) == "Customer ID"] <- "customer_id"
-names(store)[names(store) == "Customer Name"] <- "customer_nam
+names(store)[names(store) == "Customer Name"] <- "customer_name"
+names(store)[names(store) == "Segment"] <- "segment"
+names(store)[names(store) == "Country"] <- "country"
+names(store)[names(store) == "City"] <- "city"
+names(store)[names(store) == "State"] <- "state"
+names(store)[names(store) == "Postal Code"] <- "postal_code"
+names(store)[names(store) == "Region"] <- "region"
+names(store)[names(store) == "Product ID"] <- "product_id"
+names(store)[names(store) == "Category"] <- "category"
+names(store)[names(store) == "Sub-Category"] <- "sub_category"
+names(store)[names(store) == "Product Name"] <- "product_name"
+names(store)[names(store) == "Sales"] <- "sales"
+names(store)[names(store) =="Quantity"] <- "quantity"
+names(store)[names(store) == "Discount"] <- "discount"
+names(store)[names(store) == "Profit"] <- "profit"
 
 
-
-###########  Question #################################
-
+###########  Question ############################
 # How many customers in this database ?
 # Top 10 of customers which we had sold the most? 
 # What is product which we sales the most? 
@@ -55,8 +73,9 @@ names(store)[names(store) == "Customer Name"] <- "customer_nam
 # what is the most ship mode that customer choose ?
 # how many group in segment and what is the most segment ?
 # Trends of transaction?
+# frequency of data in each columns
+##################################################
 
-###########################################################
 
 
 ######## clean and choose data for analysis ########
@@ -69,24 +88,47 @@ class(store$ship_date)
 ship_date <- as.Date(store$ship_date, format = "%m/%d/%Y")
 order_date <- as.Date(store$order_date, format = "%m/%d/%Y")
 
-store1 <- store %>% separate(order_date, into = c("mont", "day", "year"), remove = F, convert = T)
-view(store1)
-names(store1)
-store1 <- store1[c(1,2,3,5,4,6,7:24)] # new arrange column
+# I wanna know more about year and month(from order date)for count unique value as a new column.
 
-str(store1)
-summary(store1)
-########### Show ######### Data description
-#### Data table overview
+store$month_year <- format(as.Date(
+  store$order_date, format = "%m/%d/%Y"), "%Y-%m") 
+
 
 #######################################################
 # How many customers in this database ?
 # Ans 783 
 
 
+# I counting unique customer in each Month-Year
+group_by_month <- 
+  store %>%                             
+  group_by(month_year) %>%
+  summarise(unique_customer = n_distinct(customer_id))
+group_by_month
+
+# A tibble: 48 × 2
+#  month_year unique_customer
+#   <chr>                <int>
+# 1 2014-01                 32
+# 2 2014-02                 27
+# 3 2014-03                 69
+# 4 2014-04                 64
+# 5 2014-05                 67
+# 6 2014-06                 63
+# 7 2014-07                 65
+# 8 2014-08                 70
+# 9 2014-09                118
+# 10 2014-10                 75
+# … with 38 more rows
+
+# if we see that we can know about seasonal or Which month has a lot of customers.
+# more than this we can calculate multiple varible by group. 
+
+library(data.table)
+
 # Top 10 of customers which we had sold the most? 
 
-customer_s <- store1 %>% 
+customer_s <- store %>% 
   group_by(customer_name) %>%
   summarize(
     sum_sale = sum(sales),
@@ -111,8 +153,6 @@ customer_s <- store1 %>%
 # 8 Hunter Lopez         12873.      5622.          0.2    11
 # 9 Sanjit Engle         12209.      2651.          2.1    19
 # 10 Christopher Conant   12129.      2177.         3.1    11
-
-
 
 
 
