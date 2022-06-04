@@ -1,17 +1,24 @@
 # install.packages("dplyr")
 # install.packages("tidyverse")
 # install.packages("purrr")
+# install.packages("data.table")
+
 
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
+library(data.table)
 
 # import data
 library(readr)
 store <- read_csv("Desktop/Bootcamp/samsple_store.csv")
 View(store)
 dim(store) # 9,994 rows and 21 column
+
+# Let’s me show some information of the data. 
+
+
 
 head(store)
 
@@ -69,6 +76,44 @@ store1 <- store1[c(1,2,3,5,4,6,7:24)] # new arrange column
 
 str(store1)
 summary(store1)
+########### Show ######### Data description
+#### Data table overview
+
+#######################################################
+# How many customers in this database ?
+# Ans 783 
+
+
+# Top 10 of customers which we had sold the most? 
+
+customer_s <- store1 %>% 
+  group_by(customer_name) %>%
+  summarize(
+    sum_sale = sum(sales),
+    sum_profit = sum(profit),
+    sum_discount = sum(discount),
+    n=n()
+    ) %>%
+  arrange(desc(sum_sale)) 
+
+# From this question, I compared sales, profit, discount and n (n is count transaction)that we have from individual customer top 10.
+# we see The most sale customer doesn't mean we have most profit. 
+
+# customer_name      sum_sale sum_profit sum_discount       n
+# <chr>                 <dbl>      <dbl>        <dbl>      <int>
+# 1 Sean Miller          25043.     -1981.          3.7    15
+# 2 Tamara Chand         19052.      8981.          1.4    12
+# 3 Raymond Buch         15117.      6976.          1.7    18
+# 4 Tom Ashbrook         14596.      4704.          0.8    10
+# 5 Adrian Barton        14474.      5445.          4.8    20
+# 6 Ken Lonsdale         14175.       807.          5.8    29
+# 7 Sanjit Chand         14142.      5757.          1.4    22
+# 8 Hunter Lopez         12873.      5622.          0.2    11
+# 9 Sanjit Engle         12209.      2651.          2.1    19
+# 10 Christopher Conant   12129.      2177.         3.1    11
+
+
+
 
 
 
