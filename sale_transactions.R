@@ -121,13 +121,50 @@ group_by_month
 # 10 2014-10                 75
 # … with 38 more rows
 
-# if we see that we can know about seasonal or Which month has a lot of customers.
+# if we see that we can know about seasonal or which month has a lot of customers.
 # more than this we can calculate multiple varible by group. 
 
 library(data.table)
 
-# Top 10 of customers which we had sold the most? 
+group_by_month_subcat <-
+  data.table(store)[,  list(unique_customer = n_distinct(customer_id),
+                          number_of_entries = .N,unique_product = n_distinct(product_name)),
+                  by=month_year]
+group_by_month_subcat %>%  arrange(desc(unique_product))
+head(group_by_month_subcat, 8)
+# Example results 
+#   month_year unique_customer number_of_entries unique_product
+# 1:    2016-11             165               370            337
+# 2:    2016-06              90               199            186
+# 3:    2015-10              79               166            154
+# 4:    2014-06              63               135            130
+# 5:    2017-04             109               203            192
+# 6:    2016-12             157               352            314
+# 7:    2015-11             146               324            296
+# 8:    2014-11             139               318            290
 
+
+# Q: Whic year has the most sales
+store1 <- store %>% separate(order_date, into = c("month", "day", "year"), remove = F, convert = T)
+
+y_sale <- store1 %>%
+  group_by(year) %>%
+  summarise(
+    sum_sale = sum(sales)
+  ) %>%
+  arrange(desc(sum_sale))
+  
+ ## Ans 
+# y_sale 
+# A tibble: 4 × 2
+#   year sum_sale    
+#  <int>    <dbl> 
+# 1  2017  733215. 
+# 2  2016  609206. 
+# 3  2014  484247. 
+# 4  2015  470533.  
+
+# Top 10 of customers which we had sold the most? 
 customer_s <- store %>% 
   group_by(customer_name) %>%
   summarize(
