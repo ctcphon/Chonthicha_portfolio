@@ -13,6 +13,9 @@ This is my portfolio which  I created for collect my experience.
 - Description : The dataset  is list of sale transactions in USA that contains 9,994 records and 21 variables as of 2014-2018. There are consist of order date, category, region, state, profit, sale and discount etc.
 - Skills : Data wrangling, R coding, data visualization and insight business  
 - Tools : R Programming language, Excel 
+- Data Visualization :
+
+This is my first projecr whose I practiced by myself. 
 
 
 
