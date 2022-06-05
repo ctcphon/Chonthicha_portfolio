@@ -64,15 +64,18 @@ names(store)[names(store) == "Profit"] <- "profit"
 
 
 ###########  Question ############################
-# How many customers in this database ?
-# Top 10 of customers which we had sold the most? 
-# What is product which we sales the most? 
-# Arrang top 3 of product that we have most profit?
-# The state that we have most sales and what is the proportion of total sales?
-# what is the most ship mode that customer choose ?
-# how many group in segment and what is the most segment ?
-# Trends of transaction?
-# frequency of data in each columns
+
+# Q1: Whic year has the most sales ?
+# Q2: In 2017, show percentage of sale by month
+# Q3: How many customers in this database ?
+# Q4: Top 10 of customers which we had sold the most?
+# Q5: Where is region and what is segment that we have most customer?
+# Q6: What is product which we sales the most? 
+# Q7: Arrang top 3 of product that we have most profit?
+# Q8: The state in 2017 that we have most sales and what is the proportion of total sales?
+# Q9: What is the most ship mode that customer choose ?
+# Q10: 
+
 ##################################################
 
 
@@ -138,7 +141,10 @@ head(group_by_month_subcat, 8)
 # 8:    2014-11             139               318            290
 
 
-# Q: Whic year has the most sales
+
+########################## Answer ########################################
+
+# Q1: Whic year has the most sales 
 ## Ans 2017 (sum = $733,215)
 store1 <- store %>% separate(order_date, into = c("month", "day", "year"), remove = F, convert = T)
 
@@ -158,11 +164,36 @@ y_sale <- store1 %>%
 # 3  2014  484247. 
 # 4  2015  470533.  
 
-#######################################################
-# Q: How many customers in this database ?
+# Q2: In 2017, show percentage of sale by month (November has the most sale in 2017)
+my_sale <- store1 %>%
+  filter(year == "2017") %>%
+  group_by(month_year) %>%
+  summarise(
+    sum_sale = sum(sales),
+    percen_sale = (sum_sale/733215)*100
+  )
+# A tibble: 12 × 3
+#   month_year sum_sale percen_sale
+#   <chr>         <dbl>       <dbl>
+# 1 2017-01      43971.        6.00
+# 2 2017-02      20301.        2.77
+# 3 2017-03      58872.        8.03
+# 4 2017-04      36522.        4.98
+# 5 2017-05      44261.        6.04
+# 6 2017-06      52982.        7.23
+# 7 2017-07      45264.        6.17
+# 8 2017-08      63121.        8.61
+# 9 2017-09      87867.       12.0 
+# 10 2017-10      77777.       10.6 
+# 11 2017-11     118448.       16.2 
+# 12 2017-12      83829.       11.4 
+  
+
+# Q3: How many customers in this database ?
 ## Ans 783 
 
-# Q: Top 10 of customers which we had sold the most? 
+
+# Q4: Top 10 of customers which we had sold the most? 
 cn_sale <- store1 %>% 
   group_by(customer_name) %>%
   summarize(
@@ -175,6 +206,8 @@ cn_sale <- store1 %>%
 
 # From this question, I compared sales, profit, discount and n (n is count transaction)that we have from individual customer top 10.
 # we see The most sale customer doesn't mean we have most profit. 
+
+## Ans
 
 # customer_name      sum_sale sum_profit sum_discount       n
 # <chr>                 <dbl>      <dbl>        <dbl>      <int>
@@ -189,6 +222,10 @@ cn_sale <- store1 %>%
 # 9 Sanjit Engle         12209.      2651.          2.1    19
 # 10 Christopher Conant   12129.      2177.         3.1    11
 
+
+# Q5: where is region and what is segment that we have most customer?
+## Ans West and cunsumer segment
+
 # display customer segment by region
 table(store1$region, store1$segment) 
 #          Consumer Corporate Home Office
@@ -197,7 +234,8 @@ table(store1$region, store1$segment)
 #  South        838       510         272
 #  West        1672       960         571
 
-# Q: What is product which we sales the most? 
+
+# Q6: What is product which we sales the most? 
 ## Ans The product is Canon imageCLASS 2200 Advanced Copier in Technology
 
 product_sale <- store1 %>% 
@@ -218,7 +256,8 @@ product_sale %>% arrange(desc(sum_sale))
 most_product <- store1 %>% filter(product_id == "TEC-CO-10004722")
 most_product$product_name
 
-# Q: Arrang top 3 of product that we have most profit?
+
+# Q7: Arrang top 3 of product that we have most profit?
 ## Ans:[1] "Hewlett Packard LaserJet 3310 Copier"                                       
 #      [2] "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind"
 #      [3] "Canon imageCLASS 2200 Advanced Copier" 
@@ -244,9 +283,48 @@ mostp_profit <- store1 %>% filter(product_id == "TEC-CO-10004722"|
                                     product_id == "TEC-CO-10001449")
 mostp_profit1 <- unique(mostp_profit$product_name)
 
-# Q: The state that we have most sales and what is the proportion of total sales?
-## Ans 
 
+# Q8: The state in 2017 that we have most sales and what is the proportion of total sales?
+## Ans California and the proportion is 0.2
+
+state <- as.factor(store1$state)
+table(state)
+unique(store1$state) # 49 state
+
+store1 %>% filter(year==2017) %>%
+  summarise(sum_sale = sum(sales)) # 733215
+
+state_sale <- store1 %>%
+  filter(year == 2017) %>%
+  group_by(state) %>%
+  summarise(
+    sum_state_sale = sum(sales),
+    percent_sale = (sum_state_sale/733215)*100
+  ) %>% 
+  arrange(desc(proportion_sale))
+state_sale
+
+# A tibble: 47 × 3
+#   state          sum_state_sale     percent_sale
+#   <chr>               <dbl>           <dbl>
+# 1 California        146388.           20.0 
+# 2 New York           93923.           12.8 
+# 3 Washington         65540.            8.94
+# 4 Texas              43422.            5.92
+# 5 Pennsylvania       42688.            5.82
+# 6 Florida            26445.            3.61
+# 7 Michigan           25834.            3.52
+# 8 Illinois           24352.            3.32
+# 9 North Carolina     23457.            3.20
+#10 Ohio               23265.            3.17
+# … with 37 more rows
+
+
+# Q9: What is the most ship mode that customer choose?
+## Ans:
+
+
+# Q10: 
 
 
 
