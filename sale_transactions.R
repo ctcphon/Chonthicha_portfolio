@@ -73,8 +73,8 @@ names(store)[names(store) == "Profit"] <- "profit"
 # Q6: What is product which we sales the most? 
 # Q7: Arrang top 3 of product that we have most profit?
 # Q8: The state in 2017 that we have most sales and what is the proportion of total sales?
-# Q9: What is the most ship mode that customer choose ?
-# Q10: 
+# Q9: In California state, what product is the most profit for this store ?
+# Q10: What is the most ship mode that customer choose ?
 
 ##################################################
 
@@ -319,12 +319,32 @@ state_sale
 #10 Ohio               23265.            3.17
 # … with 37 more rows
 
+# Q9: In California state, what product is the most profit for this store ?
+## Ans: Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind($2288) in Office Supplies category
 
-# Q9: What is the most ship mode that customer choose?
-## Ans:
+state <- as.factor(store1$state)
+  store1 %>% 
+    filter(state == "California") %>%
+    group_by(product_id)%>%
+    summarise(profit = sum(profit),
+              n=n()) %>%
+    arrange(desc(profit))
+  
+mostp_cari <- store %>% 
+  filter(product_id == "OFF-BI-10003527") %>%
+  select(product_name, category, sub_category)
+unique(mostp_cari) 
+view(mostp_cari)
 
+# Q10: What is the most ship mode that customer choose?
+## Ans: Standard class
 
-# Q10: 
+shipmode <- store1$ship_mode  
+table(shipmode)    
+
+#   First Class       Same Day   Second Class  Standard Class 
+#          1538            543           1945           5968 
+
 
 
 
