@@ -68,7 +68,6 @@ names(store)[names(store) == "Profit"] <- "profit"
 # Top 10 of customers which we had sold the most? 
 # What is product which we sales the most? 
 # Arrang top 3 of product that we have most profit?
-# Trend of 3 products in each year
 # The state that we have most sales and what is the proportion of total sales?
 # what is the most ship mode that customer choose ?
 # how many group in segment and what is the most segment ?
@@ -78,7 +77,7 @@ names(store)[names(store) == "Profit"] <- "profit"
 
 
 
-######## clean and choose data for analysis ########
+######## prepare data for analysis ########
 
 # I use as.Date function to convert columns order_date and ship_date to datetime.
 view(store$ship_date)
@@ -91,12 +90,7 @@ order_date <- as.Date(store$order_date, format = "%m/%d/%Y")
 # I wanna know more about year and month(from order date)for count unique value as a new column.
 
 store$month_year <- format(as.Date(
-  store$order_date, format = "%m/%d/%Y"), "%Y-%m") 
-
-
-#######################################################
-# How many customers in this database ?
-# Ans 783 
+ store$order_date, format = "%m/%d/%Y"), "%Y-%m") 
 
 
 # I counting unique customer in each Month-Year
@@ -145,6 +139,7 @@ head(group_by_month_subcat, 8)
 
 
 # Q: Whic year has the most sales
+## Ans 2017 (sum = $733,215)
 store1 <- store %>% separate(order_date, into = c("month", "day", "year"), remove = F, convert = T)
 
 y_sale <- store1 %>%
@@ -154,7 +149,6 @@ y_sale <- store1 %>%
   ) %>%
   arrange(desc(sum_sale))
   
- ## Ans 
 # y_sale 
 # A tibble: 4 × 2
 #   year sum_sale    
@@ -164,15 +158,19 @@ y_sale <- store1 %>%
 # 3  2014  484247. 
 # 4  2015  470533.  
 
-# Top 10 of customers which we had sold the most? 
-customer_s <- store %>% 
+#######################################################
+# Q: How many customers in this database ?
+## Ans 783 
+
+# Q: Top 10 of customers which we had sold the most? 
+cn_sale <- store1 %>% 
   group_by(customer_name) %>%
   summarize(
     sum_sale = sum(sales),
     sum_profit = sum(profit),
     sum_discount = sum(discount),
-    n=n()
-    ) %>%
+    n=n(),
+  ) %>%
   arrange(desc(sum_sale)) 
 
 # From this question, I compared sales, profit, discount and n (n is count transaction)that we have from individual customer top 10.
@@ -191,7 +189,63 @@ customer_s <- store %>%
 # 9 Sanjit Engle         12209.      2651.          2.1    19
 # 10 Christopher Conant   12129.      2177.         3.1    11
 
+# display customer segment by region
+table(store1$region, store1$segment) 
+#          Consumer Corporate Home Office
+#  Central     1212       673         438
+#  East        1469       877         502
+#  South        838       510         272
+#  West        1672       960         571
 
+# Q: What is product which we sales the most? 
+## Ans The product is Canon imageCLASS 2200 Advanced Copier in Technology
+
+product_sale <- store1 %>% 
+  group_by(product_id) %>%
+  summarize(
+    sum_sale = sum(sales),
+    sum_profit = sum(profit),
+    n=n()
+  )
+product_sale %>% arrange(desc(sum_sale))
+
+# product_sale %>% arrange(desc(sum_sale)) 
+# A tibble: 1,862 × 4
+#   product_id      sum_sale sum_profit     n
+#   <chr>              <dbl>      <dbl> <int>
+# 1 TEC-CO-10004722   61600.   2.52e+ 4     5
+
+most_product <- store1 %>% filter(product_id == "TEC-CO-10004722")
+most_product$product_name
+
+# Q: Arrang top 3 of product that we have most profit?
+## Ans:[1] "Hewlett Packard LaserJet 3310 Copier"                                       
+#      [2] "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind"
+#      [3] "Canon imageCLASS 2200 Advanced Copier" 
+
+product_profit <- store1 %>% 
+  group_by(product_id) %>%
+  summarize(
+    sum_profit = sum(profit),
+    n=n()
+  )
+product_profit %>% arrange(desc(sum_profit)) 
+
+# A tibble: 1,862 × 3
+#   product_id      sum_profit     n
+#   <chr>                <dbl> <int>
+# 1 TEC-CO-10004722     25200.     5
+# 2 OFF-BI-10003527      7753.    10
+# 3 TEC-CO-10001449      6984.     8
+
+product_profit %>% arrange(desc(sum_profit)) 
+mostp_profit <- store1 %>% filter(product_id == "TEC-CO-10004722"|
+                                    product_id == "OFF-BI-10003527"|
+                                    product_id == "TEC-CO-10001449")
+mostp_profit1 <- unique(mostp_profit$product_name)
+
+# Q: The state that we have most sales and what is the proportion of total sales?
+## Ans 
 
 
 
