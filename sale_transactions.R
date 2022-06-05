@@ -65,7 +65,7 @@ names(store)[names(store) == "Profit"] <- "profit"
 
 ###########  Question ############################
 
-# Q1: Whic year has the most sales ?
+# Q1: Which year has the most sales ?
 # Q2: In 2017, show percentage of sale by month
 # Q3: How many customers in this database ?
 # Q4: Top 10 of customers which we had sold the most?
@@ -144,7 +144,7 @@ head(group_by_month_subcat, 8)
 
 ########################## Answer ########################################
 
-# Q1: Whic year has the most sales 
+# Q1: Which year has the most sales 
 ## Ans 2017 (sum = $733,215)
 store1 <- store %>% separate(order_date, into = c("month", "day", "year"), remove = F, convert = T)
 
