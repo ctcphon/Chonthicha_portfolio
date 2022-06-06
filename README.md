@@ -1,7 +1,7 @@
 # Conthicha Phonsrirat - Data Analyst Portfolio
 ### About
 
-I am interested in data analytics. I graduated from actuarial science in major Mathematics and Statistic (Thammasat university, December 2021).  From my point of view, I found that data can do a lot of things.  I see myself in the future working on data. 
+I am interested in data analytics. I graduated from actuarial science in major Mathematics and Statistic (Thammasat university, December 2021). I have basic knowledge of data analysis, programming and I am trying to learn more about it. From my point of view, I found that data can do a lot of things.  I see myself in the future working on data. 
 
 This is my portfolio which  I created for collect my experience. 
 
