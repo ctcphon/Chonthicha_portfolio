@@ -194,6 +194,8 @@ my_sale <- store1 %>%
 
 # Q3: How many customers in this database ?
 ## Ans 783 
+store1 %>% 
+  count(customer_name)
 
 
 # Q4: Top 10 of customers which we had sold the most? 
