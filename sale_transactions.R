@@ -36,6 +36,9 @@ head(store) # 4 ID and 17 variables
 
 
 str(store)  # for more information
+summary(store)
+mean(store$sales) # 229.858
+mean(store$profit) # 28.6569
 
 names(store)
 
