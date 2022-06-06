@@ -15,7 +15,6 @@ This is my portfolio which  I created for collect my experience.
 - Tools : R Programming language, Excel 
 - Data Visualization : [Google datastudio](https://datastudio.google.com/reporting/777720ce-aff9-4512-a7b1-a337204c0786)
 
-This is my first projecr whose I practiced by myself. 
 
 
 
