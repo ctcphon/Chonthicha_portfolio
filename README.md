@@ -10,7 +10,7 @@ This is my portfolio which  I created for collect my experience.
 
 ### Sales data
 - Code : [sale_transactions.R](https://github.com/ctcphon/Chonthicha_portfolio/blob/gh-pages/sale_transactions.R)
-- Description : The dataset  is list of sale transactions in USA that contains 9,994 records and 21 variables as of 2014-2018. There are consist of order date, category, region, state, profit, sale and discount etc.
+- Description : The dataset  is list of sale transactions in USA that contains 9,994 records and 21 variables as of 2014-2017. There are consist of order date, category, region, state, profit, sale and discount etc.
 - Skills : Data wrangling, R coding, data visualization and insight business  
 - Tools : R Programming language, Excel 
 - Data Visualization : [Google datastudio](https://datastudio.google.com/reporting/777720ce-aff9-4512-a7b1-a337204c0786)
