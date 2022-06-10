@@ -24,7 +24,7 @@ This is my portfolio which  I created for collect my experience.
 
 
 ## Certificates
-- [Intro to Programming] (https://drive.google.com/file/d/1jQXTGPwXohLO7N_eVjTPBbFKgq1_5TnR/view?usp=sharing)(june 2022)(Kaggle)
+- [Intro to Programming](https://drive.google.com/file/d/1jQXTGPwXohLO7N_eVjTPBbFKgq1_5TnR/view?usp=sharing)(June 2022)(Kaggle)
 - [Learning Excel: Data Analysis](https://lnkd.in/gpwZ8-Mm) (May 2022)(LinkedIn Learning)
 - [Ask Questions to Make Data-Driven Decisions](https://drive.google.com/file/d/1xW-6zb_U5QOdXNC2Xhw9ww_i50i_ljrj/view?usp=sharing)(April 2022)(Coursera)
 - [Foundations: Data, Data, Everywhere](https://drive.google.com/file/d/1fJnraF7HT-82cjDkrj0CmWP8bNQK8Rcn/view?usp=sharing)(April 2022)(Coursera)
