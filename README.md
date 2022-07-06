@@ -24,6 +24,7 @@ This is my portfolio which  I created for collect my experience.
 
 
 ## Certificates
+- [Introduction to SQL](https://drive.google.com/file/d/1-Qy_ZbRl2E3FOrW4kxei9870zcy82Wpx/view?usp=sharing)(July 2022)(Datacamp)
 - [Python](https://drive.google.com/file/d/1aIGVJ9tt8M44nDu1v5-5ccB3YPjLYr0o/view?usp=sharing)(July 2022)(Kaggle)
 - [Intro to Programming](https://drive.google.com/file/d/1jQXTGPwXohLO7N_eVjTPBbFKgq1_5TnR/view?usp=sharing)(June 2022)(Kaggle)
 - [Learning Excel: Data Analysis](https://lnkd.in/gpwZ8-Mm) (May 2022)(LinkedIn Learning)
