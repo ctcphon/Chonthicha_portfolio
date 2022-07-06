@@ -20,6 +20,15 @@ This is my portfolio which  I created for collect my experience.
 
 ## Study Projects
 
+### Data@ANZ Program
+Task 1: Exploratory Data Analysis
+- Goal: Data vistualization and Data segmentation
+- Code:
+- Description:
+- Skills:
+- Tools:
+
+
 
 
 
