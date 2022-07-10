@@ -33,6 +33,7 @@ Task 1: Exploratory Data Analysis
 
 
 ## Certificates
+- [Data Visualization for Everyone](https://drive.google.com/file/d/1AbYiKnlHzDPnBWQXAkSKIrkulPNE_0U9/view?usp=sharing)(July 2022)(Datacamp)
 - [Data Science for Everyone](https://drive.google.com/file/d/1xo0_fMjqOzfw5vVf3RCBnbgyAX6JOY11/view?usp=sharing)(July 2022)(Datacamp)
 - [Foundations of Digital Marketing and E-commerce](https://drive.google.com/file/d/1YCKZ123Go3oWg6wWkAIieTP1qLA-Pkv8/view?usp=sharing)(July 2022)(Coursera)
 - [Introduction to SQL](https://drive.google.com/file/d/1-Qy_ZbRl2E3FOrW4kxei9870zcy82Wpx/view?usp=sharing)(July 2022)(Datacamp)
