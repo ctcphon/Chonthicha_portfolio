@@ -28,7 +28,12 @@ Task 1: Exploratory Data Analysis
 - Skills:
 - Tools:
 
-
+### Customer Personality Analysis
+- Goal: Customer segment
+- Code:
+- Description:
+- Skills:
+- Tools:
 
 
 
